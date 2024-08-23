@@ -12,8 +12,8 @@ namespace FitnessTracker.Data
         public FitnessTrackerDBContext (DbContextOptions<FitnessTrackerDBContext> options)
             : base(options)
         {
-        }
+		}
 
-        public DbSet<FitnessTracker.Model.User> User { get; set; } = default!;
+        public DbSet<User> User { get; set; } = default!;
     }
 }
