@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using FitnessTracker.Data;
 namespace FitnessTracker
 {
 	public class Program
@@ -5,6 +8,8 @@ namespace FitnessTracker
 		public static void Main(string[] args)
 		{
 			var builder = WebApplication.CreateBuilder(args);
+			builder.Services.AddDbContext<FitnessTrackerDBContext>(options =>
+			    options.UseSqlServer(builder.Configuration.GetConnectionString("FitnessTrackerDBContext") ?? throw new InvalidOperationException("Connection string 'FitnessTrackerDBContext' not found.")));
 
 			// Add services to the container.
 
