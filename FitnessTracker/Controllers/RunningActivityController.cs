@@ -52,7 +52,7 @@ namespace FitnessTracker.Controllers
 		}
 
 		[HttpPost]
-		public async Task<ActionResult<RunningActivity>> PostRunningActivity(RunningActivityDTO runningActivityDto)
+		public async Task<ActionResult<RunningActivity>> CreateRunningActivity(RunningActivityDTO runningActivityDto)
 		{
 			_logger.LogInformation("Adding a new running activity");
 			var runningActivity = _mapper.Map<RunningActivity>(runningActivityDto);
@@ -62,7 +62,7 @@ namespace FitnessTracker.Controllers
 		}
 
 		[HttpPut("{id}")]
-		public async Task<IActionResult> PutRunningActivity(int id, RunningActivity runningActivity)
+		public async Task<IActionResult> UpdateRunningActivity(int id, RunningActivity runningActivity)
 		{
 			if (id != runningActivity.Id)
 			{
