@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using FitnessTracker.Data;
+using FitnessTracker.Interface;
+using FitnessTracker.Repository;
 namespace FitnessTracker
 {
 	public class Program
@@ -18,7 +20,20 @@ namespace FitnessTracker
 			builder.Services.AddEndpointsApiExplorer();
 			builder.Services.AddSwaggerGen();
 
+			// Configure logging
+			builder.Logging.ClearProviders();
+			builder.Logging.AddConsole();
+			builder.Logging.AddDebug();
+
+			builder.Services.AddScoped<IUserRepository, UserRepository>();
+			builder.Services.AddScoped<IRunningActivityRepository, RunningActivityRepository>();
+
+			// Register AutoMapper
+			builder.Services.AddAutoMapper(typeof(Program));
+
 			var app = builder.Build();
+
+
 
 			// Configure the HTTP request pipeline.
 			if (app.Environment.IsDevelopment())
