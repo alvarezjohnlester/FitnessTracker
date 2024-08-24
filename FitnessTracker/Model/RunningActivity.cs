@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace FitnessTracker.Model
 {
@@ -14,6 +15,7 @@ namespace FitnessTracker.Model
 		public TimeSpan Duration => EndTime - StartTime;
 		public double AveragePace => Duration.TotalMinutes / Distance;
 		public int UserID { get; set; }
+		[JsonIgnore]
 		public bool IsDeleted { get; set; }
 	}
 }

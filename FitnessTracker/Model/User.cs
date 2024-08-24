@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace FitnessTracker.Model
 {
@@ -19,6 +20,7 @@ namespace FitnessTracker.Model
 		public double BMI => Weight / Math.Pow(Height / 100, 2);
 
 		public ICollection<RunningActivity> RunningActivities { get; set; }
+		[JsonIgnore]
 		public bool IsDeleted { get; set; }
 	}
 

@@ -7,6 +7,6 @@
 		public DateTime EndTime { get; set; }
 		public double Distance { get; set; }
 		public string DistanceUnitType { get; set; }
-		public int UserProfileId { get; set; }
+		public int UserID { get; set; }
 	}
 }
