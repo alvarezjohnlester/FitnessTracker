@@ -1,5 +1,5 @@
 # FitnessTracker
-
+ This project is built using .NET 6, Entity Framework, and xUnit for testing.
 
 ## Installation and Setup
 
