@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using FitnessTracker.Data;
 using FitnessTracker.Interface;
 using FitnessTracker.Repository;
+using FitnessTracker.Middleware;
 namespace FitnessTracker
 {
 	public class Program
@@ -41,6 +42,12 @@ namespace FitnessTracker
 				app.UseSwagger();
 				app.UseSwaggerUI();
 			}
+			else
+			{
+				app.UseExceptionHandler("/error");
+			}
+
+			app.UseMiddleware<CustomExceptionMiddleware>();
 
 			app.UseHttpsRedirection();
 

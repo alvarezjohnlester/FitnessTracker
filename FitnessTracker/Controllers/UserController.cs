@@ -58,6 +58,7 @@ namespace FitnessTracker.Controllers
 			_logger.LogInformation("Adding a new user profile");
 			var userData = _mapper.Map<User>(userDTO);
 			await _userProfileRepository.AddAsync(userData);
+			_logger.LogInformation("Successfully added");
 			return CreatedAtAction(nameof(GetUser), new { id = userData.Id }, userData);
 		}
 
@@ -85,6 +86,12 @@ namespace FitnessTracker.Controllers
 			await _userProfileRepository.DeleteAsync(id);
 			_logger.LogInformation($"User profile with ID {id} is deleted");
 			return NoContent();
+		}
+
+		[HttpGet("test-error")]
+		public IActionResult TestError()
+		{
+			throw new Exception("This is a test exception.");
 		}
 	}
 }

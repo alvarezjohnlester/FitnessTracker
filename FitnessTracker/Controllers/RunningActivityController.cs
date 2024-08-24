@@ -57,6 +57,7 @@ namespace FitnessTracker.Controllers
 			_logger.LogInformation("Adding a new running activity");
 			var runningActivity = _mapper.Map<RunningActivity>(runningActivityDto);
 			await _runningActivityRepository.AddAsync(runningActivity);
+			_logger.LogInformation("Successfully added");
 			return CreatedAtAction(nameof(GetRunningActivity), new { id = runningActivity.Id }, runningActivity);
 		}
 
